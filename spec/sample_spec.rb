@@ -39,4 +39,48 @@ describe Rover do
       end
     end
   end
+
+  describe '#move' do
+    context 'when initial position' do
+      context 'when moved once' do
+        it 'changes position correctly' do
+          rover = Rover.new
+          rover.move
+          expect(rover.position).to eq({ x: 0, y: 1})
+        end
+      end
+
+      context 'when moved twice' do
+        it 'changes position correctly' do
+          rover = Rover.new
+          2.times { rover.move }
+          expect(rover.position).to eq({ x: 0, y: 2})
+        end
+      end
+
+      context 'when moved twice and turned right and moved once' do
+        it 'changes position correctly' do
+          rover = Rover.new
+          rover.move
+          rover.move
+          rover.turn_right
+          rover.move
+          expect(rover.position).to eq({ x: 1, y: 2})
+        end
+      end
+
+      context 'when turned right twice, moved twice, turned left, and moved once' do
+        it 'changes position correctly' do
+          rover = Rover.new
+          rover.turn_right
+          rover.turn_right
+          rover.move
+          rover.move
+          rover.turn_left
+          rover.move
+          expect(rover.position).to eq({ x: 1, y: - 2})
+        end
+      end
+    end
+  end
 end

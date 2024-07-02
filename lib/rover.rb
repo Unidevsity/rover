@@ -34,4 +34,21 @@ class Rover
       @direction = "N"
     end
   end
+
+  def move
+    case @direction
+    when "N"
+      @y += 1
+    when "E"
+      @x += 1
+    when "S"
+      @y -= 1
+    when "W"
+      @x -= 1
+    end
+  end
+
+  def position
+    { x: @x, y: @y }
+  end
 end
