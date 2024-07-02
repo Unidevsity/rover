@@ -29,4 +29,14 @@ describe Rover do
       end
     end
   end
+
+  describe '#turn_left' do
+    context 'when turning left once' do
+      it 'is turned to the W' do
+        rover = Rover.new
+        rover.turn_left
+        expect(rover.direction).to eq "W"
+      end
+    end
+  end
 end
