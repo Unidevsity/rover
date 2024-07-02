@@ -1,16 +1,32 @@
 require 'rover'
 
-describe 'sample spec' do
-  it 'passes' do
-    expect(true).to be_truthy
-  end
+describe Rover do
+  describe '#turn_right' do
+    context 'when rover is initially turned to N' do
+      context 'when turned right once' do
+        it 'should be turned to the E' do
+          rover = Rover.new
+          rover.turn_right
+          expect(rover.direction).to eq "E"
+        end
+      end
 
-  it 'fails' do
-    expect(false).to be_falsey
-  end
+      context 'when turned right twice' do
+        it 'should be turned to the S' do
+          rover = Rover.new
+          rover.turn_right
+          rover.turn_right
+          expect(rover.direction).to eq "S"
+        end
+      end
 
-  it 'rover' do
-    expect(Rover).not_to be nil 
-    expect(Rover.new.hello).to eq('I am martian rover.')
+      context 'when turned around to the right' do
+        it 'should be turned to the N' do
+          rover = Rover.new
+          4.times { rover.turn_right }
+          expect(rover.direction).to eq "N"
+        end
+      end
+    end
   end
 end
